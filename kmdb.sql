@@ -100,8 +100,8 @@
 -- The Dark Knight Rises  Anne Hathaway         Selina Kyle
 
 -- Turns column mode on but headers off
-.mode column
-.headers off
+--.mode column
+--.headers off
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
@@ -114,19 +114,65 @@
 -- TODO!
 
 -- Prints a header for the movies output
-.print "Movies"
-.print "======"
-.print ""
+--.print "Movies"
+--.print "======"
+--.print ""
 
 -- The SQL statement for the movies output
 -- TODO!
 
 -- Prints a header for the cast output
-.print ""
-.print "Top Cast"
-.print "========"
-.print ""
+--.print ""
+--.print "Top Cast"
+--.print "========"
+--.print ""
 
 
 -- The SQL statement for the cast output
 -- TODO!
+
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS studios;
+DROP TABLE IF EXISTS actors;
+
+CREATE TABLE movies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    date TEXT,
+    rating TEXT,
+    studio_id INTEGER
+);
+
+INSERT INTO movies (
+    name,
+    date,
+    rating
+)
+
+VALUES 
+    ("Batman Begins","2005","PG-13"),
+    ("The Dark Knight","2008","PG-13"),
+    ("The Dark Knight Rises","2012","PG-13");
+
+CREATE TABLE studios (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT
+);
+
+INSERT INTO studios (
+    name
+)
+
+VALUES  
+    ("Warner Bros."),
+    ("Warner Bros."),
+    ("Warner Bros.");
+    
+SELECT movies.name, movies.date, movies.rating, studios.name
+FROM movies INNER JOIN studios ON movies.id = studios.id;
+
+CREATE TABLE actors (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT
+
+
