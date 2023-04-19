@@ -168,11 +168,27 @@ VALUES
     ("Warner Bros."),
     ("Warner Bros.");
     
-SELECT movies.name, movies.date, movies.rating, studios.name
-FROM movies INNER JOIN studios ON movies.id = studios.id;
 
 CREATE TABLE actors (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT
+    actor_name TEXT,
+    character_name TEXT
+);
 
+INSERT INTO actors (
+    actor_name,
+    character_name
+)
 
+VALUES
+    ("Christian Bale", "Bruce Wayne"),
+    ("Michael Caine", "Alfred"),
+    ("Liam Neeson", "Ra's Al Ghul"),
+    ("Katie Holmes", "Rachel Dawes"),
+    ("Gary Oldman", "Commissioner Gordon"),
+    ("Heath Ledger", "Joker"),
+    ("Aaron Eckhart", "Harvey Dent"),
+    ("Maggie Gyllenhaal", "Rachel Dawes"),
+    ("Tom Hardy", "Bane"),
+    ("Joseph Gordon-Levitt", "John Blake"),
+    ("Anne Hathaway", "Selina Kyle")
