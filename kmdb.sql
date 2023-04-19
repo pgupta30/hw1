@@ -211,5 +211,5 @@ FROM movies INNER JOIN studios ON movies.id = studios.movie_id;
 .print "Top Cast"
 .print "========"
 .print ""
-SELECT movies.name, movies.year, movies.rating, studios.name
-FROM movies INNER JOIN studios ON movies.id = studios.movie_id;
+SELECT movies.name, actors.actual_name, actors.character_name
+FROM movies INNER JOIN actors ON movies.id = actors.movie_id;
