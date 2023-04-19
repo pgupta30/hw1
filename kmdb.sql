@@ -138,14 +138,13 @@ DROP TABLE IF EXISTS actors;
 CREATE TABLE movies (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
-    date TEXT,
-    rating TEXT,
-    studio_id INTEGER
+    year TEXT,
+    rating TEXT
 );
 
 INSERT INTO movies (
     name,
-    date,
+    year,
     rating
 )
 
@@ -156,39 +155,61 @@ VALUES
 
 CREATE TABLE studios (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
+    movie_id INTEGER,
     name TEXT
 );
 
 INSERT INTO studios (
+    movie_id,
     name
 )
 
 VALUES  
-    ("Warner Bros."),
-    ("Warner Bros."),
-    ("Warner Bros.");
+    (1,"Warner Bros."),
+    (2,"Warner Bros."),
+    (3,"Warner Bros.");
     
-
 CREATE TABLE actors (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    actor_name TEXT,
+    movie_id INTEGER,
+    actual_name TEXT,
     character_name TEXT
 );
 
 INSERT INTO actors (
-    actor_name,
+    movie_id,
+    actual_name,
     character_name
 )
 
 VALUES
-    ("Christian Bale", "Bruce Wayne"),
-    ("Michael Caine", "Alfred"),
-    ("Liam Neeson", "Ra's Al Ghul"),
-    ("Katie Holmes", "Rachel Dawes"),
-    ("Gary Oldman", "Commissioner Gordon"),
-    ("Heath Ledger", "Joker"),
-    ("Aaron Eckhart", "Harvey Dent"),
-    ("Maggie Gyllenhaal", "Rachel Dawes"),
-    ("Tom Hardy", "Bane"),
-    ("Joseph Gordon-Levitt", "John Blake"),
-    ("Anne Hathaway", "Selina Kyle")
+    (1,"Christian Bale", "Bruce Wayne"),
+    (1,"Michael Caine", "Alfred"),
+    (1,"Liam Neeson", "Ra's Al Ghul"),
+    (1,"Katie Holmes", "Rachel Dawes"),
+    (1,"Gary Oldman", "Commissioner Gordon"),
+    (2,"Christian Bale", "Bruce Wayne"),
+    (2,"Heath Ledger", "Joker"),
+    (2,"Aaron Eckhart", "Harvey Dent"),
+    (2,"Michael Caine", "Alfred"),
+    (2,"Maggie Gyllenhaal", "Rachel Dawes"),
+    (3,"Christian Bale", "Bruce Wayne"),
+    (3,"Gary Oldman", "Commissioner Gordon"),
+    (3,"Tom Hardy", "Bane"),
+    (3,"Joseph Gordon-Levitt", "John Blake"),
+    (3,"Anne Hathaway", "Selina Kyle");
+
+.mode column
+.headers off
+.print "Movies"
+.print "======"
+.print ""
+SELECT movies.name, movies.year, movies.rating, studios.name
+FROM movies INNER JOIN studios ON movies.id = studios.movie_id;
+
+.print ""
+.print "Top Cast"
+.print "========"
+.print ""
+SELECT movies.name, movies.year, movies.rating, studios.name
+FROM movies INNER JOIN studios ON movies.id = studios.movie_id;
